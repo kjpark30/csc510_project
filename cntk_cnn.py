@@ -11,6 +11,7 @@ import os
 import cntk as C
 import datetime
 
+# Comment out next line to use GPU
 C.try_set_default_device(C.DeviceDescriptor.cpu_device())
 # Paths relative to current python file.
 # abs_path = os.path.dirname(os.path.abspath(__file__))
