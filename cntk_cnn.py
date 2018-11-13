@@ -11,6 +11,7 @@ import os
 import cntk as C
 import datetime
 
+C.try_set_default_device(C.DeviceDescriptor.cpu_device())
 # Paths relative to current python file.
 # abs_path = os.path.dirname(os.path.abspath(__file__))
 # data_path = os.path.join(abs_path, "..", "..", "..", "DataSets", "MNIST")
@@ -44,11 +45,10 @@ def convnet_mnist(debug_output=False, epoch_size=60000, minibatch_size=100, max_
 
     with C.layers.default_options(activation=C.ops.relu, pad=False):
         conv1 = C.layers.Convolution2D((5, 5), 32, pad=True)(scaled_input)
-        pool1 = C.layers.MaxPooling((3, 3), (2, 2))(conv1)
-        conv2 = C.layers.Convolution2D((3, 3), 48)(pool1)
-        pool2 = C.layers.MaxPooling((3, 3), (2, 2))(conv2)
-        conv3 = C.layers.Convolution2D((3, 3), 64)(pool2)
-        f4 = C.layers.Dense(96)(conv3)
+        pool1 = C.layers.MaxPooling((2, 2), strides=2)(conv1)
+        conv2 = C.layers.Convolution2D((5, 5), 64)(pool1)
+        pool2 = C.layers.MaxPooling((2, 2), strides=2)(conv2)
+        f4 = C.layers.Dense(1024)(pool2)
         drop4 = C.layers.Dropout(0.5)(f4)
         z = C.layers.Dense(num_output_classes, activation=None)(drop4)
 
@@ -65,7 +65,8 @@ def convnet_mnist(debug_output=False, epoch_size=60000, minibatch_size=100, max_
     mm_schedule = C.learners.momentum_schedule_per_sample(mms, epoch_size=epoch_size)
 
     # Instantiate the trainer object to drive the model training
-    learner = C.learners.momentum_sgd(z.parameters, lr_schedule, mm_schedule)
+    learner = C.learners.sgd(z.parameters, lr=0.001)
+    # learner = C.learners.momentum_sgd(z.parameters, lr_schedule, mm_schedule)
     progress_printer = C.logging.ProgressPrinter(tag='Training', num_epochs=max_epochs)
     trainer = C.Trainer(z, (ce, pe), learner, progress_printer)
 
