@@ -12,7 +12,7 @@ import cntk as C
 from cntk.train import Trainer, minibatch_size_schedule
 from cntk.io import MinibatchSource, CTFDeserializer, StreamDef, StreamDefs, INFINITELY_REPEAT
 from cntk.device import cpu, try_set_default_device
-from cntk.learners import adadelta, learning_parameter_schedule_per_sample
+from cntk.learners import adadelta, learning_parameter_schedule_per_sample, sgd, adam
 from cntk.ops import relu, element_times, constant
 from cntk.layers import Dense, Sequential, For
 from cntk.losses import cross_entropy_with_softmax
@@ -94,7 +94,7 @@ def simple_mnist(tensorboard_logdir=None):
 
     # Instantiate the trainer object to drive the model training
     lr = learning_parameter_schedule_per_sample(1)
-    trainer = Trainer(z, (ce, pe), adadelta(z.parameters, lr), progress_writers)
+    trainer = Trainer(z, (ce, pe), sgd(z.parameters, 0.001), progress_writers)
 
     training_session(
         trainer=trainer,
@@ -135,7 +135,7 @@ def simple_mnist(tensorboard_logdir=None):
     trainer.print_node_timing()
 
     # Average of evaluation errors of all test minibatches
-    return test_result / num_minibatches_to_test
+    return test_result * 100 / num_minibatches_to_test
 
 
 if __name__ == '__main__':
@@ -152,5 +152,5 @@ if __name__ == '__main__':
     error = simple_mnist(args['tensorboard_logdir'])
 
     print("Finished in %s" % (datetime.datetime.now() - start_time).total_seconds())
-    print("Error: %f" % error)
+    print("Avg test error: %f percent" % error)
 
