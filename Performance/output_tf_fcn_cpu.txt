@@ -1,0 +1,46 @@
+WARNING:tensorflow:From tf_fcn.py:12: read_data_sets (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
+WARNING:tensorflow:From /home/kpark8/CSC510/python_project/local/lib/python2.7/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:260: maybe_download (from tensorflow.contrib.learn.python.learn.datasets.base) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please write your own downloading logic.
+WARNING:tensorflow:From /home/kpark8/CSC510/python_project/local/lib/python2.7/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:262: extract_images (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.data to implement this functionality.
+WARNING:tensorflow:From /home/kpark8/CSC510/python_project/local/lib/python2.7/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:267: extract_labels (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.data to implement this functionality.
+WARNING:tensorflow:From /home/kpark8/CSC510/python_project/local/lib/python2.7/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:110: dense_to_one_hot (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.one_hot on tensors.
+WARNING:tensorflow:From /home/kpark8/CSC510/python_project/local/lib/python2.7/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:290: __init__ (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
+WARNING:tensorflow:From tf_fcn.py:56: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+
+Future major versions of TensorFlow will allow gradients to flow
+into the labels input on backprop by default.
+
+See @{tf.nn.softmax_cross_entropy_with_logits_v2}.
+
+2018-11-27 21:21:05.814260: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Extracting MNIST_data/train-images-idx3-ubyte.gz
+Extracting MNIST_data/train-labels-idx1-ubyte.gz
+Extracting MNIST_data/t10k-images-idx3-ubyte.gz
+Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
+('Epoch:', '0001', 'cost =', '2.035526993')
+('Epoch:', '0002', 'cost =', '1.455752160')
+('Epoch:', '0003', 'cost =', '1.064672160')
+('Epoch:', '0004', 'cost =', '0.826890138')
+('Epoch:', '0005', 'cost =', '0.689300311')
+('Epoch:', '0006', 'cost =', '0.603619684')
+('Epoch:', '0007', 'cost =', '0.547003778')
+('Epoch:', '0008', 'cost =', '0.505566908')
+('Epoch:', '0009', 'cost =', '0.475015195')
+('Epoch:', '0010', 'cost =', '0.451322081')
+Learning Finished!
+('Accuracy:', 0.888)
+('Label: ', array([4]))
+('Prediction: ', array([4]))
+Finished in 31.124018
