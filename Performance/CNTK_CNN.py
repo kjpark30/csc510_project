@@ -11,12 +11,6 @@ import os
 import cntk as C
 import datetime
 
-# Comment out next line to use GPU
-C.try_set_default_device(C.DeviceDescriptor.cpu_device())
-# Paths relative to current python file.
-# abs_path = os.path.dirname(os.path.abspath(__file__))
-# data_path = os.path.join(abs_path, "..", "..", "..", "DataSets", "MNIST")
-# model_path = os.path.join(abs_path, "Models")
 data_path = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(data_path, "Models")
 
@@ -30,7 +24,7 @@ def create_reader(path, is_training, input_dim, label_dim):
 
 
 # Creates and trains a feedforward classification model for MNIST images
-def convnet_mnist(debug_output=False, epoch_size=60000, minibatch_size=100, max_epochs=10):
+def convnet_mnist(epoch_size=60000, minibatch_size=100, max_epochs=10):
     image_height = 28
     image_width = 28
     num_channels = 1
@@ -59,15 +53,8 @@ def convnet_mnist(debug_output=False, epoch_size=60000, minibatch_size=100, max_
     reader_train = create_reader(os.path.join(data_path, 'Train-28x28_cntk_text.txt'), True, input_dim,
                                  num_output_classes)
 
-    # Set learning parameters
-    lr_per_sample = [0.001] * 10 + [0.0005] * 10 + [0.0001]
-    lr_schedule = C.learning_parameter_schedule_per_sample(lr_per_sample, epoch_size=epoch_size)
-    mms = [0] * 5 + [0.9990239141819757]
-    mm_schedule = C.learners.momentum_schedule_per_sample(mms, epoch_size=epoch_size)
-
     # Instantiate the trainer object to drive the model training
     learner = C.learners.sgd(z.parameters, lr=0.001)
-    # learner = C.learners.momentum_sgd(z.parameters, lr_schedule, mm_schedule)
     progress_printer = C.logging.ProgressPrinter(tag='Training', num_epochs=max_epochs)
     trainer = C.Trainer(z, (ce, pe), learner, progress_printer)
 
@@ -135,6 +122,10 @@ def convnet_mnist(debug_output=False, epoch_size=60000, minibatch_size=100, max_
 
 
 if __name__ == '__main__':
+    # If the next line is used, CPU will be the target device.
+    # If commented out, the line will use GPU as the target device.
+    # C.try_set_default_device(C.DeviceDescriptor.cpu_device())
+
     start_time = datetime.datetime.now()
     convnet_mnist()
     print("Finished in %s" % (datetime.datetime.now() - start_time).total_seconds())

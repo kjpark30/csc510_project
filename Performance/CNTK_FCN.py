@@ -12,7 +12,7 @@ import cntk as C
 from cntk.train import Trainer, minibatch_size_schedule
 from cntk.io import MinibatchSource, CTFDeserializer, StreamDef, StreamDefs, INFINITELY_REPEAT
 from cntk.device import cpu, try_set_default_device
-from cntk.learners import adadelta, learning_parameter_schedule_per_sample, sgd, adam
+from cntk.learners import adadelta, learning_parameter_schedule_per_sample, sgd
 from cntk.ops import relu, element_times, constant
 from cntk.layers import Dense, Sequential, For
 from cntk.losses import cross_entropy_with_softmax
@@ -20,11 +20,6 @@ from cntk.metrics import classification_error
 from cntk.train.training_session import *
 from cntk.logging import ProgressPrinter, TensorBoardProgressWriter
 import datetime
-
-# abs_path = os.path.dirname(os.path.abspath(__file__))
-
-# Comment out the next line to use GPU
-# C.try_set_default_device(C.DeviceDescriptor.cpu_device())
 
 
 def check_path(path):
@@ -43,7 +38,6 @@ def create_reader(path, is_training, input_dim, label_dim):
 
 
 # Creates and trains a feedforward classification model for MNIST images
-
 def simple_mnist(tensorboard_logdir=None):
     input_dim = 784
     num_output_classes = 10
@@ -63,10 +57,6 @@ def simple_mnist(tensorboard_logdir=None):
     ce = cross_entropy_with_softmax(z, label)
     pe = classification_error(z, label)
 
-    # data_dir = os.path.join(abs_path, "..", "..", "..", "DataSets", "MNIST")
-
-    # path = os.path.normpath(os.path.join(data_dir, "Train-28x28_cntk_text.txt"))
-    # check_path(path)
     data_dir = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(data_dir, 'Train-28x28_cntk_text.txt')
 
@@ -93,8 +83,8 @@ def simple_mnist(tensorboard_logdir=None):
         progress_writers.append(TensorBoardProgressWriter(freq=10, log_dir=tensorboard_logdir, model=z))
 
     # Instantiate the trainer object to drive the model training
-    lr = learning_parameter_schedule_per_sample(1)
-    trainer = Trainer(z, (ce, pe), sgd(z.parameters, 0.001), progress_writers)
+    lr = 0.001
+    trainer = Trainer(z, (ce, pe), sgd(z.parameters, lr), progress_writers)
 
     training_session(
         trainer=trainer,
@@ -120,7 +110,6 @@ def simple_mnist(tensorboard_logdir=None):
     C.debugging.start_profiler()
     C.debugging.enable_profiler()
     C.debugging.set_node_timing(True)
-    # C.cntk_py.disable_cpueval_optimization() # uncomment this to check CPU eval perf without optimization
 
     test_minibatch_size = 1024
     num_samples = 10000
@@ -139,9 +128,9 @@ def simple_mnist(tensorboard_logdir=None):
 
 
 if __name__ == '__main__':
-    # Specify the target device to be used for computing, if you do not want to
-    # use the best available one, e.g.
-    # try_set_default_device(cpu())
+    # If the next line is used, CPU will be the target device.
+    # If commented out, the line will use GPU as the target device.
+    # C.try_set_default_device(C.DeviceDescriptor.cpu_device())
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-tensorboard_logdir', '--tensorboard_logdir',
