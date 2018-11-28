@@ -1,0 +1,65 @@
+/home/kpark8/CSC510/python_project/local/lib/python2.7/site-packages/cntk/cntk_py_init.py:90: UserWarning: 
+
+################################################ Missing optional dependency (    MKL     ) ################################################
+   CNTK may crash if the component that depends on those dependencies is loaded.
+   Visit https://docs.microsoft.com/en-us/cognitive-toolkit/Setup-Linux-Python#mkl for more information.
+############################################################################################################################################
+
+  warnings.warn(WARNING_MSG % ('    MKL     ', 'https://docs.microsoft.com/en-us/cognitive-toolkit/Setup-Linux-Python#mkl'))
+/home/kpark8/CSC510/python_project/local/lib/python2.7/site-packages/cntk/cntk_py_init.py:98: UserWarning: 
+
+################################################ Missing optional dependency (GPU-Specific) ################################################
+   CNTK may crash if the component that depends on those dependencies is loaded.
+   Visit https://docs.microsoft.com/en-us/cognitive-toolkit/Setup-Linux-Python#optional-gpu-specific-packages for more information.
+############################################################################################################################################
+If you intend to use CNTK without GPU support, you can ignore the (likely) GPU-specific warning!
+############################################################################################################################################
+
+  warnings.warn(WARNING_MSG_GPU_ONLY % ('GPU-Specific', 'https://docs.microsoft.com/en-us/cognitive-toolkit/Setup-Linux-Python#optional-gpu-specific-packages'))
+Selected CPU as the process wide default device.
+-------------------------------------------------------------------
+Build info: 
+
+		Built time: Sep 14 2018 01:27:52
+		Last modified date: Fri Sep 14 00:54:25 2018
+		Build type: release
+		Build target: GPU
+		With ASGD: yes
+		Math lib: mkl
+		CUDA version: 9.0.0
+		CUDNN version: 7.1.4
+		Build Branch: HEAD
+		Build SHA1: 7c1b0fadb64f83a41739020b24fb2d4950015229
+		MPI distribution: Open MPI
+		MPI version: 1.10.7
+-------------------------------------------------------------------
+ElementTimes6                  forward avg 0.000686s, backward avg 0.000000s (fwd# 9|bwd# 0)
+Hardmax319                     forward avg 0.000073s, backward avg 0.000000s (fwd# 9|bwd# 0)
+Minus305                       forward avg 0.000000s, backward avg 0.000000s (fwd# 0|bwd# 0)
+Minus326                       forward avg 0.000008s, backward avg 0.000000s (fwd# 9|bwd# 0)
+Plus227                        forward avg 0.000389s, backward avg 0.000000s (fwd# 9|bwd# 0)
+Plus245                        forward avg 0.000363s, backward avg 0.000000s (fwd# 9|bwd# 0)
+Plus263                        forward avg 0.000160s, backward avg 0.000000s (fwd# 9|bwd# 0)
+ReduceElements302              forward avg 0.000000s, backward avg 0.000000s (fwd# 0|bwd# 0)
+ReduceElements338              forward avg 0.000011s, backward avg 0.000000s (fwd# 9|bwd# 0)
+ReduceElements341              forward avg 0.000000s, backward avg 0.000000s (fwd# 0|bwd# 0)
+ReLU229                        forward avg 0.000190s, backward avg 0.000000s (fwd# 9|bwd# 0)
+ReLU247                        forward avg 0.000155s, backward avg 0.000000s (fwd# 9|bwd# 0)
+Times225                       forward avg 0.001935s, backward avg 0.000000s (fwd# 9|bwd# 0)
+Times243                       forward avg 0.000533s, backward avg 0.000000s (fwd# 9|bwd# 0)
+Times261                       forward avg 0.000081s, backward avg 0.000000s (fwd# 9|bwd# 0)
+TransposeTimes299              forward avg 0.000000s, backward avg 0.000000s (fwd# 0|bwd# 0)
+TransposeTimes322              forward avg 0.000051s, backward avg 0.000000s (fwd# 9|bwd# 0)
+Learning rate per minibatch: 0.001
+Finished Epoch[1 of 10]: [Training] loss = 2.056632 * 60032, metric = 59.94% * 60032 4.387s (13684.1 samples/s);
+Finished Epoch[2 of 10]: [Training] loss = 1.503288 * 59968, metric = 29.07% * 59968 2.354s (25474.9 samples/s);
+Finished Epoch[3 of 10]: [Training] loss = 1.045484 * 60032, metric = 20.24% * 60032 2.510s (23917.1 samples/s);
+Finished Epoch[4 of 10]: [Training] loss = 0.788620 * 59968, metric = 16.89% * 59968 2.320s (25848.3 samples/s);
+Finished Epoch[5 of 10]: [Training] loss = 0.651067 * 60032, metric = 15.11% * 60032 2.266s (26492.5 samples/s);
+Finished Epoch[6 of 10]: [Training] loss = 0.568674 * 59968, metric = 13.85% * 59968 2.337s (25660.2 samples/s);
+Finished Epoch[7 of 10]: [Training] loss = 0.513888 * 60032, metric = 13.04% * 60032 2.261s (26551.1 samples/s);
+Finished Epoch[8 of 10]: [Training] loss = 0.475029 * 59968, metric = 12.40% * 59968 2.196s (27307.8 samples/s);
+Finished Epoch[9 of 10]: [Training] loss = 0.446013 * 60032, metric = 11.90% * 60032 2.306s (26033.0 samples/s);
+Finished Epoch[10 of 10]: [Training] loss = 0.423350 * 59968, metric = 11.40% * 59968 2.334s (25693.2 samples/s);
+Finished in 25.894667
+Avg test error: 10.818142 percent

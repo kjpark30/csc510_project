@@ -1,0 +1,52 @@
+/home/kpark8/CSC510/python_project/local/lib/python2.7/site-packages/cntk/cntk_py_init.py:90: UserWarning: 
+
+################################################ Missing optional dependency (    MKL     ) ################################################
+   CNTK may crash if the component that depends on those dependencies is loaded.
+   Visit https://docs.microsoft.com/en-us/cognitive-toolkit/Setup-Linux-Python#mkl for more information.
+############################################################################################################################################
+
+  warnings.warn(WARNING_MSG % ('    MKL     ', 'https://docs.microsoft.com/en-us/cognitive-toolkit/Setup-Linux-Python#mkl'))
+/home/kpark8/CSC510/python_project/local/lib/python2.7/site-packages/cntk/cntk_py_init.py:98: UserWarning: 
+
+################################################ Missing optional dependency (GPU-Specific) ################################################
+   CNTK may crash if the component that depends on those dependencies is loaded.
+   Visit https://docs.microsoft.com/en-us/cognitive-toolkit/Setup-Linux-Python#optional-gpu-specific-packages for more information.
+############################################################################################################################################
+If you intend to use CNTK without GPU support, you can ignore the (likely) GPU-specific warning!
+############################################################################################################################################
+
+  warnings.warn(WARNING_MSG_GPU_ONLY % ('GPU-Specific', 'https://docs.microsoft.com/en-us/cognitive-toolkit/Setup-Linux-Python#optional-gpu-specific-packages'))
+Selected CPU as the process wide default device.
+-------------------------------------------------------------------
+Build info: 
+
+		Built time: Sep 14 2018 01:27:52
+		Last modified date: Fri Sep 14 00:54:25 2018
+		Build type: release
+		Build target: GPU
+		With ASGD: yes
+		Math lib: mkl
+		CUDA version: 9.0.0
+		CUDNN version: 7.1.4
+		Build Branch: HEAD
+		Build SHA1: 7c1b0fadb64f83a41739020b24fb2d4950015229
+		MPI distribution: Open MPI
+		MPI version: 1.10.7
+-------------------------------------------------------------------
+Training 1701770 parameters in 8 parameter tensors.
+
+Learning rate per minibatch: 0.001
+Finished Epoch[1 of 10]: [Training] loss = 2.244732 * 60000, metric = 78.72% * 60000 24.734s (2425.8 samples/s);
+Finished Epoch[2 of 10]: [Training] loss = 1.945720 * 60000, metric = 52.48% * 60000 23.376s (2566.7 samples/s);
+Finished Epoch[3 of 10]: [Training] loss = 1.215998 * 60000, metric = 32.74% * 60000 23.094s (2598.1 samples/s);
+Finished Epoch[4 of 10]: [Training] loss = 0.746993 * 60000, metric = 21.91% * 60000 22.920s (2617.8 samples/s);
+Finished Epoch[5 of 10]: [Training] loss = 0.571485 * 60000, metric = 16.93% * 60000 22.925s (2617.2 samples/s);
+Finished Epoch[6 of 10]: [Training] loss = 0.483710 * 60000, metric = 14.26% * 60000 23.017s (2606.8 samples/s);
+Finished Epoch[7 of 10]: [Training] loss = 0.429726 * 60000, metric = 12.80% * 60000 22.951s (2614.3 samples/s);
+Finished Epoch[8 of 10]: [Training] loss = 0.391681 * 60000, metric = 11.72% * 60000 22.796s (2632.0 samples/s);
+Finished Epoch[9 of 10]: [Training] loss = 0.360497 * 60000, metric = 10.70% * 60000 22.824s (2628.8 samples/s);
+Finished Epoch[10 of 10]: [Training] loss = 0.334714 * 60000, metric = 9.90% * 60000 22.759s (2636.3 samples/s);
+
+Final Results: Minibatch[1-11]: errs = 7.24% * 10000
+
+Finished in 233.871249
