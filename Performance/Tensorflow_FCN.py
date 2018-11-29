@@ -1,4 +1,5 @@
-# copyright : hun https://github.com/hunkim/DeepLearningZeroToAll
+# Copyrights
+# https://github.com/hunkim/DeepLearningZeroToAll
 
 import tensorflow as tf
 import random
