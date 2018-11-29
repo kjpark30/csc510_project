@@ -36,35 +36,21 @@ W3 = tf.get_variable("W3", shape=[200, 10])
 b3 = tf.Variable(tf.random_normal([10]))
 hypothesis = tf.matmul(L2, W3) + b3
 
-# W3 = tf.get_variable("W3", shape=[512, 512],
-#                      initializer=tf.contrib.layers.xavier_initializer())
-# b3 = tf.Variable(tf.random_normal([512]))
-# L3 = tf.nn.relu(tf.matmul(L2, W3) + b3)
-#
-# W4 = tf.get_variable("W4", shape=[512, 512],
-#                      initializer=tf.contrib.layers.xavier_initializer())
-# b4 = tf.Variable(tf.random_normal([512]))
-# L4 = tf.nn.relu(tf.matmul(L3, W4) + b4)
-#
-# W5 = tf.get_variable("W5", shape=[512, 10],
-#                      initializer=tf.contrib.layers.xavier_initializer())
-# b5 = tf.Variable(tf.random_normal([10]))
-# hypothesis = tf.matmul(L4, W5) + b5
-
 # define cost/loss & optimizer
 cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(
     logits=hypothesis, labels=Y))
-#optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
 optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(cost)
 
-# initialize
+
+# Uncomment when using CPU
+
 # session_conf = tf.ConfigProto(
 #     device_count={'CPU' : 1, 'GPU' : 0},
 #     allow_soft_placement=True,
 #     log_device_placement=False
 # )
 
-#sess = tf.Session(config = session_conf) #using CPU
+#sess = tf.Session(config = session_conf)
 sess = tf.Session() #GPU
 
 sess.run(tf.global_variables_initializer())
