@@ -1,0 +1,25 @@
+#Parameter setting for convolutional neural network (CNN)
+
+- 1st Convolutional layer : 5 x 5 (32 Filters)
+- 1st Pooling layer : 2 x 2 
+- 2nd Convolutional layer : 5 x 5 (64 Filters)
+- 2nd Pooling layer : 2 x 2 
+- batch size: 100
+- epoch: 10
+- Padding: “same”
+- Pooling: Max-pooling
+- Activation function : ReLU
+- Dropout rate: 0.5
+- optimizer : GradientDescentOptimizer/SGD
+- learning rate: 0.001
+
+#Parameter setting for fully connected neural network (FCN)
+
+- the number of hidden layer: 2
+- the number of hidden nodes: 200
+- activation function: ReLU
+- epoch: 10
+- Training Minibatch size: 64
+- Testing Minibatch size: 1024
+- optimizer : GradientDescentOptimizer/SGD
+- Learning rate: 0.001
