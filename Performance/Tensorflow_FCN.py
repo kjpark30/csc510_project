@@ -6,12 +6,10 @@ import random
 from tensorflow.examples.tutorials.mnist import input_data
 import datetime
 
-#tf.set_random_seed(777)  # reproducibility
+
 start_time = datetime.datetime.now()
 
 mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
-# Check out https://www.tensorflow.org/get_started/mnist/beginners for
-# more information about the mnist dataset
 
 # parameters
 learning_rate = 0.001
@@ -23,7 +21,6 @@ X = tf.placeholder(tf.float32, [None, 784])
 Y = tf.placeholder(tf.float32, [None, 10])
 
 # weights & bias for nn layers
-# http://stackoverflow.com/questions/33640581/how-to-do-xavier-initialization-on-tensorflow
 W1 = tf.get_variable("W1", shape=[784, 200])
 b1 = tf.Variable(tf.random_normal([200]))
 L1 = tf.nn.relu(tf.matmul(X, W1) + b1)
@@ -55,7 +52,7 @@ sess = tf.Session() #GPU
 
 sess.run(tf.global_variables_initializer())
 
-# train my model
+# train the model
 for epoch in range(training_epochs):
     avg_cost = 0
     total_batch = int(mnist.train.num_examples / batch_size)
