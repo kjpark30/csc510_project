@@ -1,7 +1,7 @@
-# Lab 10 MNIST and Deep learning
+# copyright : hun https://github.com/hunkim/DeepLearningZeroToAll
+
 import tensorflow as tf
 import random
-# import matplotlib.pyplot as plt
 
 from tensorflow.examples.tutorials.mnist import input_data
 import datetime
